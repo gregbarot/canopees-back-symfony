@@ -16,17 +16,17 @@ class TargetAudienceFixtures extends Fixture
         $targetAudiences = [
             [
                 'name' => 'Particuliers',
-                'imageUrl' => '/assets/images/publiccibles/particuliers.png',
+                'imageUrl' => '/assets/images/publiccible/img_particuliers.png',
                 'description' => 'Nous créons et entretenons des jardins sur mesure, pensés pour votre confort, votre style de vie et votre environnement.',
             ],
             [
                 'name' => 'Professionnels',
-                'imageUrl' => '/assets/images/publiccibles/professionnels.png',
+                'imageUrl' => '/assets/images/publiccible/img_professionnels.png',
                 'description' => 'Nous valorisons vos espaces extérieurs pour renforcer votre image, accueillir vos clients et améliorer le cadre de travail.',
             ],
             [
                 'name' => 'Collectivités',
-                'imageUrl' => '/assets/images/publiccibles/collectivites.png',
+                'imageUrl' => '/assets/images/publiccible/img_collectivites.png',
                 'description' => 'Nous aménageons et entretenons des espaces publics durables, favorisant le bien-être des usagers et la biodiversité locale.',
             ],
         ];
