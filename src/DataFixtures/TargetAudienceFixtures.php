@@ -8,7 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 
-class AppFixtures extends Fixture
+class TargetAudienceFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
@@ -31,11 +31,11 @@ class AppFixtures extends Fixture
             ],
         ];
 
-        foreach ($targetAudiences as $data) {
+        foreach ($targetAudiences as $targetAudiencedata) {
             $targetAudience = new TargetAudience();
-            $targetAudience->setName($data['name']);
-            $targetAudience->setImageUrl($data['imageUrl']);
-            $targetAudience->setDescription($data['description']);
+            $targetAudience->setName($targetAudiencedata['name']);
+            $targetAudience->setImageUrl($targetAudiencedata['imageUrl']);
+            $targetAudience->setDescription($targetAudiencedata['description']);
 
             $manager->persist($targetAudience);
         }
