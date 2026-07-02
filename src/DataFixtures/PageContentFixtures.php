@@ -105,6 +105,14 @@ class PageContentFixtures extends Fixture
             //Infos
         [
         'page' => 'contact',
+        'section' => 'introduction',
+        'title' => 'Contact',
+        'subtitle' => '',
+        'textContent' => '',
+        ],
+            //Infos
+        [
+        'page' => 'contact',
         'section' => 'infos',
         'title' => 'Bob et Tom',
         'subtitle' => 'Gérants de Canopées',
