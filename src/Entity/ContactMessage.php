@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ContactMessageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactMessageRepository::class)]
+#[ApiResource()]
 class ContactMessage
 {
     #[ORM\Id]
@@ -15,7 +17,7 @@ class ContactMessage
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $firstName = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -38,19 +40,28 @@ class ContactMessage
     #[ORM\Column]
     private ?bool $isAnswered = null;
 
+
+    //je crée une fonction qui va envoyer ces données à chaque POST de message car elles ne seront pas dans le formulaire.
+    public function __construct()
+{
+    $this->sentAt = new \DateTimeImmutable();
+    $this->isRead = false;
+    $this->isAnswered = false;
+}
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getName(): ?string
     {
-        return $this->firstName;
+        return $this->name;
     }
 
-    public function setFirstName(string $firstName): static
+    public function setName(string $name): static
     {
-        $this->firstName = $firstName;
+        $this->name = $name;
 
         return $this;
     }
