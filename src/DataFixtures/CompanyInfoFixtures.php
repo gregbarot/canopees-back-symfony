@@ -14,12 +14,14 @@ class CompanyInfoFixtures extends Fixture
 
         $companyInfo->setName('Canopées');
         $companyInfo->setAddress('820 Boulevard des Capucines, 82000 Montauban');
+        $companyInfo->setAddressLine1('820 Boulevard des Capucines');
+        $companyInfo->setAddressLine2('82000 Montauban');
         $companyInfo->setPhone('09.48.56.87.96');
         $companyInfo->setEmail('contact@canopees.fr');
         $companyInfo->setFacebookUrl('https://www.facebook.com/');
         $companyInfo->setInstagramUrl('https://www.instagram.com/');
         $companyInfo->setLinkedinUrl('https://www.linkedin.com/');
-        $companyInfo->setLogoUrl('/assets/images/logo/logo-canopees.png');
+        $companyInfo->setLogoUrl('/assets/images/logo-canopees.png');
 
         $manager->persist($companyInfo);
         $manager->flush();
