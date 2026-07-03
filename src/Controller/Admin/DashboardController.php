@@ -47,13 +47,26 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+    yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
 
-        // yield MenuItem::section('Pages');
-        yield MenuItem::linkTo(PageContentCrudController::class, 'Contenus des pages', 'fa fa-file-list');
+    yield MenuItem::section('Accueil');
+    yield MenuItem::linkTo(SliderImageCrudController::class, 'Photos du slider', 'fa fa-images');
+    yield MenuItem::linkTo(TargetAudienceCrudController::class, 'Public cible', 'fa fa-users');
+    yield MenuItem::linkTo(RealisationImageCrudController::class, 'Réalisations', 'fa fa-tree');
 
-        // yield MenuItem::section('Bios');
-        yield MenuItem::linkTo(BioCrudController::class, 'Contenus des bios', 'fa fa-file-list');
-        // yield MenuItem::linkTo(SomeCrudController::class, 'The Label', 'fas fa-list');
+    yield MenuItem::section('Pages');
+    yield MenuItem::linkTo(PageContentCrudController::class, 'Contenus des pages', 'fa fa-file-lines');
+    yield MenuItem::linkTo(BioCrudController::class, 'Biographies', 'fa fa-user');
+    yield MenuItem::linkTo(CompanyInfoCrudController::class, 'Sociétés', 'fa fa-user');
+
+    yield MenuItem::section('Prestations et tarifs');
+    yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations / Tarifs', 'fa fa-leaf');
+    yield MenuItem::linkTo(ServiceImageCrudController::class, 'Images des prestations', 'fa fa-image');
+
+    yield MenuItem::section('Messages');
+    yield MenuItem::linkTo(ContactMessageCrudController::class, 'Messages de contact', 'fa fa-envelope');
+
+    yield MenuItem::section('Administration');
+    yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-user-lock');
     }
 }
