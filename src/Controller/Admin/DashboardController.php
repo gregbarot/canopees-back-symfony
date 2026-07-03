@@ -57,7 +57,7 @@ class DashboardController extends AbstractDashboardController
     yield MenuItem::section('Pages');
     yield MenuItem::linkTo(PageContentCrudController::class, 'Contenus des pages', 'fa fa-file-lines');
     yield MenuItem::linkTo(BioCrudController::class, 'Biographies', 'fa fa-user');
-    yield MenuItem::linkTo(CompanyInfoCrudController::class, 'Sociétés', 'fa fa-user');
+    yield MenuItem::linkTo(CompanyInfoCrudController::class, 'Sociétés', 'fa fa-industry');
 
     yield MenuItem::section('Prestations et tarifs');
     yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations / Tarifs', 'fa fa-leaf');
