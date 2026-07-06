@@ -3,13 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\SliderImage;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class SliderImageCrudController extends AbstractCrudController
@@ -40,7 +40,7 @@ class SliderImageCrudController extends AbstractCrudController
                 ->setBasePath('')
                 ->setUploadDir('public')
                 ->setUploadedFileNamePattern('/assets/images/slider/[uuid].[extension]')
-                ->setRequired($pageName === Crud::PAGE_NEW)
+                ->setRequired(false)
                 ->setHelp('Image utilisée dans le slider d’accueil. Formats conseillés : JPG, PNG ou WEBP.'),
 
             TextField::new('altText', 'Texte alternatif')
@@ -51,6 +51,22 @@ class SliderImageCrudController extends AbstractCrudController
 
             BooleanField::new('isActive', 'Active'),
         ];
+    }
+
+    //si on ne modifie que le texte ça n'efface pas l'image
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+    if ($entityInstance instanceof SliderImage) {
+        $originalData = $entityManager
+            ->getUnitOfWork()
+            ->getOriginalEntityData($entityInstance);
+
+        if (!$entityInstance->getImageUrl() && isset($originalData['imageUrl'])) {
+            $entityInstance->setImageUrl($originalData['imageUrl']);
+        }
+    }
+
+    parent::updateEntity($entityManager, $entityInstance);
     }
 }
 
