@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form\Model;
+namespace App\Form;
 
 use App\Form\Model\ChangePasswordData;
 use Symfony\Component\Form\AbstractType;
