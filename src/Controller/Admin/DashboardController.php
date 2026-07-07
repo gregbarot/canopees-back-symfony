@@ -68,5 +68,6 @@ class DashboardController extends AbstractDashboardController
 
     yield MenuItem::section('Administration');
     yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-user-lock');
+    yield MenuItem::linkToRoute('Modifier mon mot de passe', 'fa fa-key', 'admin_change_password');
     }
 }
