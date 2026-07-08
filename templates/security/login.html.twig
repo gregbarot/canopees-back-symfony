@@ -1,38 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Canopées - Connexion
+{% endblock %}
 
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+	<div class="admin-custom-page">
+		<div class="admin-custom-card">
+			<form method="post" class="admin-login-form">
+				{% if error %}
+					<div class="alert alert-danger">
+						{{ error.messageKey|trans(error.messageData, 'security') }}
+					</div>
+				{% endif %}
+				<div class="admin-login-header">
+					<img src="{{ asset('assets/images/logo-canopees.png') }}" alt="Logo Canopées" class="admin-login-logo">					
+				</div>
+				{% if app.user %}
+					<div class="admin-connected-message">
+						<p>
+							Vous êtes connecté avec
+							<strong>{{ app.user.userIdentifier }}</strong>.
+						</p>
 
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
-            </div>
-        {% endif %}
+						<div class="button-wrapper">
+							<a href="{{ path('admin') }}" class="admin-button admin-button-secondary">
+								Accéder au back-office
+							</a>
+							<a href="{{ logout_path() }}" class="admin-link">
+								Se déconnecter
+							</a>
+						</div>
+					</div>
+				{% else %}
+					<h1 class="admin-form-title">Identifiez-vous</h1>
 
-        <h1 class="h3 mb-3 font-weight-normal">Identifiez vous.</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Mot de Passe</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+					<label for="username">Email</label>
+					<input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
 
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
+					<label for="password">Mot de passe</label>
+					<input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
 
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
-            </div>
-        #}
+					<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Se connecter
-        </button>
-    </form>
+					<div class="button-wrapper">
+						<button class="admin-button admin-button-secondary" type="submit">
+							Se connecter
+						</button>
+					</div>
+				{% endif %}
+			</form>
+		</div>
+	</div>
 {% endblock %}

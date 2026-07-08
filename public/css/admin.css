@@ -1,3 +1,7 @@
+/* =========================
+Personnalisation du CSS d'easy-admin pour le dashboard
+========================= */
+
 :root {
     --body-bg: #f4f8f3;
     --body-color: #2f332a;
@@ -19,8 +23,8 @@
 }
 
 /* Fond général */
-body.ea {
-    background: #f8f3f3;
+body {
+    background: #f8f3f3 !important;
 }
 
 /* Logo du back-office */
@@ -96,3 +100,130 @@ body.ea {
     font-weight: 700;
 }
 
+
+/* =========================
+   Pages personnalisées admin
+   Login / création utilisateur / changement mot de passe
+   ========================= */
+
+.admin-custom-page {
+    min-height: 100vh;
+    padding: 32px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f3e8;
+}
+
+.admin-custom-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 32px;
+    background: #fefefe;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.admin-login-header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.admin-login-logo {
+    width: 80%;
+    height: auto;
+    margin-bottom: 18px;
+}
+
+.admin-login-form {
+    width: 100%;
+}
+
+.admin-form-title {
+    margin-bottom: 24px;
+    color: #098136;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.admin-custom-card label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #2f332a;
+}
+
+.admin-custom-card input.form-control {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border: 1px solid rgba(9, 129, 54, 0.35);
+    border-radius: 10px;
+    background-color: #fffdf8;
+    color: #2f332a;
+}
+
+.admin-custom-card input.form-control:focus {
+    border-color: #098136;
+    box-shadow: 0 0 0 0.2rem rgba(9, 129, 54, 0.15);
+    outline: none;
+}
+
+/* Correction Chrome autofill */
+.admin-custom-card input.form-control:-webkit-autofill,
+.admin-custom-card input.form-control:-webkit-autofill:hover,
+.admin-custom-card input.form-control:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #fffdf8 inset !important;
+    -webkit-text-fill-color: #2f332a !important;
+}
+
+.button-wrapper {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.admin-button {
+    display: inline-block;
+    margin: 6px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-button-secondary {
+    background-color: #098136;
+    color: #ffffff;
+}
+
+.admin-button-secondary:hover,
+.admin-button-secondary:focus {
+    background-color: #066f2d;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.admin-link {
+    display: inline-block;
+    margin: 12px;
+    color: #098136;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.admin-link:hover,
+.admin-link:focus {
+    color: #066f2d;
+    text-decoration: underline;
+}
+
+.admin-connected-message {
+    text-align: center;
+}
