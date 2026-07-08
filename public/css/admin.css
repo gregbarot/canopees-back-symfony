@@ -1,6 +1,6 @@
 /* =========================
-Personnalisation du CSS d'easy-admin pour le dashboard
-========================= */
+   Thème EasyAdmin - Canopées
+   ========================= */
 
 :root {
     --body-bg: #f4f8f3;
@@ -13,7 +13,7 @@ Personnalisation du CSS d'easy-admin pour le dashboard
     --sidebar-menu-active-item-color: #fefefe;
 
     --link-color: #098136;
-    --link-hover-color: #06902f;
+    --link-hover-color: #066f2d;
 
     --button-primary-bg: #098136;
     --button-primary-color: #fefefe;
@@ -24,64 +24,82 @@ Personnalisation du CSS d'easy-admin pour le dashboard
 
 /* Fond général */
 body {
-    background: #f8f3f3 !important;
+    background: var(--body-bg) !important;
+    color: var(--body-color);
 }
 
 /* Logo du back-office */
 .admin-brand {
     width: auto;
-    background: #f7f3e8;
-    border-radius: 18px;
+    margin: 5px;
     padding: 10px 14px;
-    margin: 5px 5px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--body-bg);
+    border-radius: 18px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .admin-logo {
-    max-height: 50px;
-    max-width: 170px;
-    object-fit: contain;
     display: block;
+    max-width: 170px;
+    max-height: 50px;
+    object-fit: contain;
 }
 
-/* Cartes et tableaux */
+/* Cartes, tableaux et panneaux EasyAdmin */
 .content-panel,
 .fieldset,
-.datagrid {
-    border-radius: 16px;
+.datagrid,
+.table-responsive {
+    background: #f7f3e8;
     border: 1px solid rgba(9, 129, 54, 0.15);
+    border-radius: 16px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
 }
 
-/* Boutons principaux */
+/* Tableaux de liste EasyAdmin */
+.datagrid table,
+.table {
+    background: #fefefe;
+    margin-bottom: 0;
+}
+
+.datagrid thead,
+.datagrid tbody,
+.datagrid tr,
+.datagrid td,
+.datagrid th {
+    background-color: #fefefe;
+}
+
+/* Boutons EasyAdmin */
 .btn-primary {
-    background-color: #098136;
-    border-color: #098136;
+    background-color: var(--link-color);
+    border-color: var(--link-color);
     border-radius: 999px;
     font-weight: 600;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color: #066f2d;
-    border-color: #066f2d;
+    background-color: var(--link-hover-color);
+    border-color: var(--link-hover-color);
 }
 
-/* Boutons secondaires */
 .btn-secondary {
     border-radius: 999px;
 }
 
-/* Badges / statuts */
+/* Badges */
 .badge {
-    border-radius: 999px;
     padding: 0.45em 0.7em;
+    border-radius: 999px;
 }
 
-/* Formulaires */
+/* Formulaires EasyAdmin */
 .form-control,
 .form-select {
     border-radius: 12px;
@@ -89,17 +107,16 @@ body {
 
 .form-control:focus,
 .form-select:focus {
-    border-color: #098136;
+    border-color: var(--link-color);
     box-shadow: 0 0 0 0.2rem rgba(9, 129, 54, 0.15);
 }
 
-/* Titres de pages */
+/* Titres EasyAdmin */
 .content-header-title h1,
 .content-header-title .title {
-    color: #098136;
+    color: var(--link-color);
     font-weight: 700;
 }
-
 
 /* =========================
    Pages personnalisées admin
@@ -112,7 +129,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f7f3e8;
+    background: var(--body-bg);
 }
 
 .admin-custom-card {
@@ -131,6 +148,7 @@ body {
 
 .admin-login-logo {
     width: 80%;
+    max-width: 220px;
     height: auto;
     margin-bottom: 18px;
 }
@@ -141,20 +159,38 @@ body {
 
 .admin-form-title {
     margin-bottom: 24px;
-    color: #098136;
+    color: var(--link-color);
     font-size: 1.6rem;
     font-weight: 700;
     text-align: center;
 }
 
+.admin-form-info {
+    margin-bottom: 24px;
+    color: #5f6659;
+    text-align: center;
+}
+
+.admin-connected-message {
+    text-align: center;
+}
+
+/* Labels */
+.admin-custom-card label,
+.admin-custom-card legend {
+    color: var(--body-color);
+    font-weight: 600;
+}
+
 .admin-custom-card label {
     display: block;
     margin-bottom: 6px;
-    font-weight: 600;
-    color: #2f332a;
 }
 
-.admin-custom-card input.form-control {
+/* Champs */
+.admin-custom-card input.form-control,
+.admin-custom-card select.form-select,
+.admin-custom-card textarea.form-control {
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 14px;
@@ -162,11 +198,13 @@ body {
     border: 1px solid rgba(9, 129, 54, 0.35);
     border-radius: 10px;
     background-color: #fffdf8;
-    color: #2f332a;
+    color: var(--body-color);
 }
 
-.admin-custom-card input.form-control:focus {
-    border-color: #098136;
+.admin-custom-card input.form-control:focus,
+.admin-custom-card select.form-select:focus,
+.admin-custom-card textarea.form-control:focus {
+    border-color: var(--link-color);
     box-shadow: 0 0 0 0.2rem rgba(9, 129, 54, 0.15);
     outline: none;
 }
@@ -176,9 +214,45 @@ body {
 .admin-custom-card input.form-control:-webkit-autofill:hover,
 .admin-custom-card input.form-control:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px #fffdf8 inset !important;
-    -webkit-text-fill-color: #2f332a !important;
+    -webkit-text-fill-color: var(--body-color) !important;
 }
 
+/* Champ rôle généré en fieldset */
+.admin-custom-card fieldset {
+    margin-bottom: 18px;
+    padding: 16px;
+    border: 1px solid rgba(9, 129, 54, 0.35);
+    border-radius: 12px;
+    background-color: #fffdf8;
+}
+
+.admin-custom-card fieldset legend {
+    margin-bottom: 10px;
+    padding: 0 6px;
+    font-size: 1rem;
+    color: var(--body-color);
+    font-weight: 600;
+}
+
+.admin-custom-card fieldset .form-check {
+    margin-bottom: 8px;
+}
+
+.admin-custom-card fieldset .form-check-input {
+    border-color: rgba(9, 129, 54, 0.5);
+}
+
+.admin-custom-card fieldset .form-check-input:checked {
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+}
+
+.admin-custom-card fieldset .form-check-label {
+    color: var(--body-color);
+    font-weight: 500;
+}
+
+/* Boutons et liens des pages personnalisées */
 .button-wrapper {
     margin-top: 24px;
     text-align: center;
@@ -198,13 +272,13 @@ body {
 }
 
 .admin-button-secondary {
-    background-color: #098136;
+    background-color: var(--link-color);
     color: #ffffff;
 }
 
 .admin-button-secondary:hover,
 .admin-button-secondary:focus {
-    background-color: #066f2d;
+    background-color: var(--link-hover-color);
     color: #ffffff;
     text-decoration: none;
     transform: translateY(-1px);
@@ -213,42 +287,13 @@ body {
 .admin-link {
     display: inline-block;
     margin: 12px;
-    color: #098136;
+    color: var(--link-color);
     font-weight: 600;
     text-decoration: none;
 }
 
 .admin-link:hover,
 .admin-link:focus {
-    color: #066f2d;
+    color: var(--link-hover-color);
     text-decoration: underline;
-}
-
-.admin-connected-message {
-    text-align: center;
-}
-
-.admin-custom-card select.form-select,
-.admin-custom-card textarea.form-control {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 14px;
-    padding: 12px 14px;
-    border: 1px solid rgba(9, 129, 54, 0.35);
-    border-radius: 10px;
-    background-color: #fffdf8;
-    color: #2f332a;
-}
-
-.admin-custom-card select.form-select:focus,
-.admin-custom-card textarea.form-control:focus {
-    border-color: #098136;
-    box-shadow: 0 0 0 0.2rem rgba(9, 129, 54, 0.15);
-    outline: none;
-}
-
-.admin-form-info {
-    margin-bottom: 24px;
-    color: #5f6659;
-    text-align: center;
 }

@@ -29,6 +29,7 @@ class CreateUserType extends AbstractType
                 'label' => 'Rôle',
                 'choices' => [
                     'Administrateur' => 'ROLE_ADMIN',
+                    // 'Utilisateur' => 'ROLE_USER',
                 ],
                 'multiple' => true,
                 'expanded' => true,
