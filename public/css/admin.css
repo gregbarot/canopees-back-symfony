@@ -227,3 +227,28 @@ body {
 .admin-connected-message {
     text-align: center;
 }
+
+.admin-custom-card select.form-select,
+.admin-custom-card textarea.form-control {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border: 1px solid rgba(9, 129, 54, 0.35);
+    border-radius: 10px;
+    background-color: #fffdf8;
+    color: #2f332a;
+}
+
+.admin-custom-card select.form-select:focus,
+.admin-custom-card textarea.form-control:focus {
+    border-color: #098136;
+    box-shadow: 0 0 0 0.2rem rgba(9, 129, 54, 0.15);
+    outline: none;
+}
+
+.admin-form-info {
+    margin-bottom: 24px;
+    color: #5f6659;
+    text-align: center;
+}
