@@ -7,11 +7,19 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
+
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 // use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
+    public function configureAssets(): Assets
+    {
+        return Assets::new()
+            ->addCssFile('css/admin.css');
+    }
+
     public function index(): Response
     {
         // return parent::index();
@@ -42,33 +50,40 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Canopées - Back-Office');
+            ->setTitle('
+                <div class="admin-brand">
+                    <img src="/assets/images/logo-canopees.png" alt="Canopées" class="admin-logo">
+                </div>
+            ')
+            ->setFaviconPath('assets\favicon-96x96.png')
+            ->disableDarkMode()
+            ;
     }
 
     public function configureMenuItems(): iterable
     {
-    yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+        yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
 
-    yield MenuItem::section('Accueil');
-    yield MenuItem::linkTo(SliderImageCrudController::class, 'Photos du slider', 'fa fa-images');
-    yield MenuItem::linkTo(TargetAudienceCrudController::class, 'Public cible', 'fa fa-users');
-    yield MenuItem::linkTo(RealisationImageCrudController::class, 'Réalisations', 'fa fa-tree');
+        yield MenuItem::section('Accueil');
+        yield MenuItem::linkTo(SliderImageCrudController::class, 'Photos du slider', 'fa fa-images');
+        yield MenuItem::linkTo(TargetAudienceCrudController::class, 'Public cible', 'fa fa-users');
+        yield MenuItem::linkTo(RealisationImageCrudController::class, 'Réalisations', 'fa fa-tree');
 
-    yield MenuItem::section('Pages');
-    yield MenuItem::linkTo(PageContentCrudController::class, 'Contenus des pages', 'fa fa-file-lines');
-    yield MenuItem::linkTo(BioCrudController::class, 'Biographies', 'fa fa-user');
-    yield MenuItem::linkTo(CompanyInfoCrudController::class, 'Sociétés', 'fa fa-industry');
+        yield MenuItem::section('Pages');
+        yield MenuItem::linkTo(PageContentCrudController::class, 'Contenus des pages', 'fa fa-file-lines');
+        yield MenuItem::linkTo(BioCrudController::class, 'Biographies', 'fa fa-user');
+        yield MenuItem::linkTo(CompanyInfoCrudController::class, 'Sociétés', 'fa fa-industry');
 
-    yield MenuItem::section('Prestations et tarifs');
-    yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations / Tarifs', 'fa fa-leaf');
-    yield MenuItem::linkTo(ServiceImageCrudController::class, 'Images des prestations', 'fa fa-image');
+        yield MenuItem::section('Prestations et tarifs');
+        yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations / Tarifs', 'fa fa-leaf');
+        yield MenuItem::linkTo(ServiceImageCrudController::class, 'Images des prestations', 'fa fa-image');
 
-    yield MenuItem::section('Messages');
-    yield MenuItem::linkTo(ContactMessageCrudController::class, 'Messages de contact', 'fa fa-envelope');
+        yield MenuItem::section('Messages');
+        yield MenuItem::linkTo(ContactMessageCrudController::class, 'Messages de contact', 'fa fa-envelope');
 
-    yield MenuItem::section('Administration');
-    yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-user-lock');
-    yield MenuItem::linkToRoute('Créer un utilisateur', 'fa fa-user-plus', 'admin_create_user');
-    yield MenuItem::linkToRoute('Modifier mon mot de passe', 'fa fa-key', 'admin_change_password');
+        yield MenuItem::section('Administration');
+        yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-user-lock');
+        yield MenuItem::linkToRoute('Créer un utilisateur', 'fa fa-user-plus', 'admin_create_user');
+        yield MenuItem::linkToRoute('Modifier mon mot de passe', 'fa fa-key', 'admin_change_password');
     }
 }

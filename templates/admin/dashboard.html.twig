@@ -1,7 +1,7 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
 {% block content_title %}
-    Tableau de bord
+    <h1>Tableau de bord</h1>
 {% endblock %}
 
 {% block main %}
@@ -10,7 +10,7 @@
             <h2>Bienvenue dans le back-office Canopées</h2>
 
             <p>
-                Utilisez le menu de gauche pour gérer les contenus du site vitrine.
+                Utilisez le menu de gauche pour gérer les contenus du site.
             </p>
 
             <hr>
@@ -18,14 +18,32 @@
             <h3>Gestion disponible</h3>
 
             <ul>
-                <li>Contenus des pages</li>
-                <li>Photos du slider</li>
-                <li>Public cible</li>
-                <li>Réalisations</li>
-                <li>Biographies de Bob et Tom</li>
-                <li>Prestations et tarifs</li>
+                <li>Accueil
+                    <ul> 
+                        <li>Photos du slider</li>
+                        <li>Public cible</li>
+                        <li>Réalisations</li>
+                    </ul>
+                </li>
+                <li>Pages
+                    <ul>
+                        <li>Contenus des pages</li>
+                        <li>Biographies de Bob et Tom</li>
+                        <li>Socciété</li>
+                    </ul>
+                </li>
+                <li>Prestations et tarifs
+                    <ul>
+                        <li>Prestations et tarifs</li>
+                        <li>Images des prestations</li>
+                    </ul>
+                </li>
                 <li>Messages de contact</li>
-                <li>Profil administrateur</li>
+                <li>Administrateur</li>
+                    <ul>
+                        <li>Utilisateurs</li>
+                        <li>Créer un utilisateur</li>
+                        <li>Modifier son mot de passe</li>
             </ul>
         </div>
     </div>

@@ -1,0 +1,98 @@
+:root {
+    --body-bg: #f4f8f3;
+    --body-color: #2f332a;
+
+    --sidebar-bg: #098136;
+    --sidebar-menu-color: #fefefe;
+    --sidebar-menu-icon-color: #f1a80f;
+    --sidebar-menu-active-item-bg: rgba(255, 255, 255, 0.16);
+    --sidebar-menu-active-item-color: #fefefe;
+
+    --link-color: #098136;
+    --link-hover-color: #06902f;
+
+    --button-primary-bg: #098136;
+    --button-primary-color: #fefefe;
+
+    --border-radius: 14px;
+    --font-size-base: 14px;
+}
+
+/* Fond général */
+body.ea {
+    background: #f8f3f3;
+}
+
+/* Logo du back-office */
+.admin-brand {
+    width: auto;
+    background: #f7f3e8;
+    border-radius: 18px;
+    padding: 10px 14px;
+    margin: 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.admin-logo {
+    max-height: 50px;
+    max-width: 170px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Cartes et tableaux */
+.content-panel,
+.fieldset,
+.datagrid {
+    border-radius: 16px;
+    border: 1px solid rgba(9, 129, 54, 0.15);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* Boutons principaux */
+.btn-primary {
+    background-color: #098136;
+    border-color: #098136;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #066f2d;
+    border-color: #066f2d;
+}
+
+/* Boutons secondaires */
+.btn-secondary {
+    border-radius: 999px;
+}
+
+/* Badges / statuts */
+.badge {
+    border-radius: 999px;
+    padding: 0.45em 0.7em;
+}
+
+/* Formulaires */
+.form-control,
+.form-select {
+    border-radius: 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #098136;
+    box-shadow: 0 0 0 0.2rem rgba(9, 129, 54, 0.15);
+}
+
+/* Titres de pages */
+.content-header-title h1,
+.content-header-title .title {
+    color: #098136;
+    font-weight: 700;
+}
+
