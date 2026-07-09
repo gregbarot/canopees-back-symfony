@@ -3,32 +3,48 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use Symfony\Component\Serializer\Attribute\Groups;
 use App\Repository\ServiceImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: ServiceImageRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(),
+        new Get(),
+    ],
+    normalizationContext: ['groups' => ['service_image:read']]
+)]
 class ServiceImage
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['service_image:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['service_image:read'])]
     private ?string $imageUrl = null;
 
     #[ORM\Column]
+    #[Groups(['service_image:read'])]
     private ?bool $isMain = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['service_image:read'])]
     private ?string $altText = null;
 
     #[ORM\ManyToOne(inversedBy: 'serviceImages')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['service_image:read'])]
     private ?Service $service = null;
 
     #[ORM\Column(options: ['default' => true])]
+    #[Groups(['service_image:read'])]
     private ?bool $isActive = true;
 
     public function getId(): ?int
@@ -48,6 +64,7 @@ class ServiceImage
         return $this;
     }
 
+    #[Groups(['service_image:read'])]
     public function isMain(): ?bool
     {
         return $this->isMain;
@@ -72,6 +89,7 @@ class ServiceImage
         return $this;
     }
 
+    #[Groups(['service_image:read'])]
     public function getService(): ?Service
     {
         return $this->service;
@@ -84,6 +102,7 @@ class ServiceImage
         return $this;
     }
 
+    #[Groups(['service_image:read'])]
     public function isActive(): ?bool
     {
         return $this->isActive;
