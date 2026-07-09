@@ -3,29 +3,43 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use Symfony\Component\Serializer\Attribute\Groups;
 use App\Repository\BioRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BioRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(),
+        new Get(),
+    ],
+    normalizationContext: ['groups' => ['bio:read']]
+)]
 class Bio
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['bio:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['bio:read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['bio:read'])]
     private ?string $role = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['bio:read'])]
     private ?string $imageUrl = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['bio:read'])]
     private ?string $description = null;
 
     public function getId(): ?int
