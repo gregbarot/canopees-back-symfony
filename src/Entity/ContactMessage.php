@@ -3,12 +3,19 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Post;
+use Symfony\Component\Serializer\Attribute\Groups;
 use App\Repository\ContactMessageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactMessageRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new Post(),
+    ],
+    denormalizationContext: ['groups' => ['contact_message:write']]
+)]
 class ContactMessage
 {
     #[ORM\Id]
@@ -17,18 +24,23 @@ class ContactMessage
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['contact_message:write'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['contact_message:write'])]
     private ?string $email = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['contact_message:write'])]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['contact_message:write'])]
     private ?string $serviceRequested = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['contact_message:write'])]
     private ?string $message = null;
 
     #[ORM\Column]
