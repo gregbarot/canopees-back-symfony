@@ -3,47 +3,67 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use Symfony\Component\Serializer\Attribute\Groups;
 use App\Repository\CompanyInfoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompanyInfoRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(),
+        new Get(),
+    ],
+    normalizationContext: ['groups' => ['company_info:read']]
+)]
 class CompanyInfo
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['company_info:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['company_info:read'])]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['company_info:read'])]
     private ?string $address = null;
     
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['company_info:read'])]
     private ?string $addressLine1 = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['company_info:read'])]
     private ?string $addressLine2 = null;
 
     #[ORM\Column(length: 30)]
+    #[Groups(['company_info:read'])]
     private ?string $phone = null;
 
     #[ORM\Column(length: 180)]
+    #[Groups(['company_info:read'])]
     private ?string $email = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['company_info:read'])]
     private ?string $facebookUrl = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['company_info:read'])]
     private ?string $instagramUrl = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['company_info:read'])]
     private ?string $linkedinUrl = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['company_info:read'])]
     private ?string $logoUrl = null;
 
     public function getId(): ?int
