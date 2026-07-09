@@ -2,29 +2,43 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\SliderImageRepository;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: SliderImageRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(),
+        new Get(),
+    ],
+    normalizationContext: ['groups' => ['slider_image:read']]
+)]
 class SliderImage
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['slider_image:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['slider_image:read'])]
     private ?string $imageUrl = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['slider_image:read'])]
     private ?string $altText = null;
 
     #[ORM\Column]
+    #[Groups(['slider_image:read'])]
     private ?int $position = null;
 
     #[ORM\Column]
+    #[Groups(['slider_image:read'])]
     private ?bool $isActive = null;
 
     public function getId(): ?int
@@ -68,6 +82,7 @@ class SliderImage
         return $this;
     }
 
+    #[Groups(['slider_image:read'])]
     public function isActive(): ?bool
     {
         return $this->isActive;
