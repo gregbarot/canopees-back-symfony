@@ -17,6 +17,12 @@
 ###< phpunit/phpunit ###
 
 ###> symfony/asset-mapper ###
-/public/assets/
+/public/assets/*
+!/public/assets/icons/
+!/public/assets/icons/**
+!/public/assets/images/
+!/public/assets/images/**
+!/public/assets/favicon-96x96.png
+
 /assets/vendor/
 ###< symfony/asset-mapper ###
