@@ -21,13 +21,11 @@ final class Version20260706132303 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE service_image CHANGE is_active is_active TINYINT DEFAULT 1 NOT NULL');
-        $this->addSql('ALTER TABLE service_image ADD CONSTRAINT FK_6C4FE9B8ED5CA9E6 FOREIGN KEY (service_id) REFERENCES service (id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE service_image DROP FOREIGN KEY FK_6C4FE9B8ED5CA9E6');
         $this->addSql('ALTER TABLE service_image CHANGE is_active is_active TINYINT NOT NULL');
     }
 }
