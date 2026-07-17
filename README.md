@@ -21,24 +21,24 @@ Créer un fichier .env.local à la racine du projet.
 
 Exemple :
 
-APP_ENV=dev
-APP_DEBUG=1
-APP_SECRET=secret_local_a_modifier
+APP_ENV=dev  
+APP_DEBUG=1  
+APP_SECRET=secret_local_a_modifier  
 
-DATABASE_URL="mysql://root:@127.0.0.1:3306/canopees?serverVersion=8.0&charset=utf8mb4"
+DATABASE_URL="mysql://root:@127.0.0.1:3306/canopees?serverVersion=8.0&charset=utf8mb4"  
 
 Adapter DATABASE_URL selon la configuration MySQL locale.
 
 ## Création de la base de données
 
-Créer la base avec Doctrine :
+Créer la base avec Doctrine :  
 php bin/console doctrine:database:create
 
-Exécuter les migrations :
+Exécuter les migrations :  
 php bin/console doctrine:migrations:migrate
 
-Chargement des données initiales
-php bin/console doctrine:fixtures:load
+Chargement des données initiales :  
+php bin/console doctrine:fixtures:load  
 
 Attention : cette commande purge la base avant de recharger les données.
 
@@ -46,10 +46,10 @@ Attention : cette commande purge la base avant de recharger les données.
 
 symfony server:start
 
-L’API est ensuite accessible à l’adresse :
+L’API est ensuite accessible à l’adresse :  
 http://127.0.0.1:8000/api
 
-Le back-office est accessible à l’adresse :
+Le back-office est accessible à l’adresse :  
 http://127.0.0.1:8000/admin
 
 
